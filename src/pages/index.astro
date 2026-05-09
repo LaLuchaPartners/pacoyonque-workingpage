@@ -43,11 +43,11 @@ const reserva = "/Reserva%201.png";
 
 		<!-- Contenido principal centrado -->
 		<div class="hero-content">
-			<div class="logo-wrapper animate-float">
-				<img src="/logo.svg" alt="Paco Yonque" class="main-logo" />
+			<div class="logo-wrapper animate-fade-up">
+				<img src="/logo.svg" alt="Paco Yonque" class="main-logo animate-float" />
 			</div>
-			<div class="status-wrapper animate-fade-up">
-				<img src="/proximamente.svg" alt="Próximamente" class="status-text" />
+			<div class="status-wrapper animate-fade-up" style="animation-delay: 0.3s;">
+				<img src="/proximamente.svg" alt="Próximamente" class="status-text animate-float" style="animation-delay: 0.5s;" />
 			</div>
 		</div>
 
@@ -77,7 +77,7 @@ const reserva = "/Reserva%201.png";
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 120%;
 		object-fit: cover;
 		z-index: -2;
 	}
@@ -85,7 +85,7 @@ const reserva = "/Reserva%201.png";
 	.overlay {
 		position: absolute;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.15);
+		background: rgba(0, 0, 0, 0.50);
 		z-index: -1;
 	}
 
@@ -136,6 +136,7 @@ const reserva = "/Reserva%201.png";
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding-bottom: 10px;
 		/* Eliminamos el padding que desajustaba el centro */
 	}
 
@@ -180,14 +181,14 @@ const reserva = "/Reserva%201.png";
 	}
 
 	.main-logo {
-		width: 350px;
+		width: 150px;
 		max-width: 80vw;
 		height: auto;
 		filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
 	}
 
 	.status-text {
-		width: 550px;
+		width: 350px;
 		max-width: 95vw;
 		height: auto;
 		margin-top: 1.5rem;
