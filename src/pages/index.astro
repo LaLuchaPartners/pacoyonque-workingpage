@@ -1,11 +1,279 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Definimos las rutas de los archivos para asegurar que se carguen correctamente
+const facturacion = "/facturacion.svg";
+const reclamaciones = "/Libro%20de%20Reclamaciones.svg";
+const reserva = "/Reserva%201.png";
 ---
 
 <Layout>
-	<Welcome />
+	<main class="page-wrapper">
+		<!-- Imagen de fondo principal -->
+		<img src="/fondo.png" alt="" class="bg-image" />
+		
+		<!-- Overlay sutil para mejorar legibilidad -->
+		<div class="overlay"></div>
+
+		<!-- Navegación superior -->
+		<nav class="top-navigation">
+			<!-- Grupo de botones a la izquierda -->
+			<div class="buttons-left">
+				<a href="#" class="btn-container">
+					<img src="/boton1.svg" alt="" class="btn-bg" />
+					<div class="btn-content">
+						<img src={facturacion} alt="Facturación" class="text-svg fact-text" />
+					</div>
+				</a>
+				<a href="#" class="btn-container">
+					<img src="/boton2.svg" alt="" class="btn-bg" />
+					<div class="btn-content">
+						<img src={reclamaciones} alt="Libro de Reclamaciones" class="text-svg reclam-text" />
+					</div>
+				</a>
+			</div>
+
+			<!-- Botón de reserva a la derecha -->
+			<div class="buttons-right">
+				<a href="#" class="reserva-container">
+					<img src={reserva} alt="Reserva aquí" class="reserva-img" />
+				</a>
+			</div>
+		</nav>
+
+		<!-- Contenido principal centrado -->
+		<div class="hero-content">
+			<div class="logo-wrapper animate-float">
+				<img src="/logo.svg" alt="Paco Yonque" class="main-logo" />
+			</div>
+			<div class="status-wrapper animate-fade-up">
+				<img src="/proximamente.svg" alt="Próximamente" class="status-text" />
+			</div>
+		</div>
+
+		<!-- Decoración inferior sutil -->
+		<div class="bottom-gradient"></div>
+	</main>
 </Layout>
+
+<style>
+	/* Contenedor principal a pantalla completa */
+	.page-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		background-color: #000;
+		z-index: 1;
+	}
+
+	/* Estilos de la imagen de fondo */
+	.bg-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -2;
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.15);
+		z-index: -1;
+	}
+
+	/* Navegación superior */
+	.top-navigation {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 2rem 5%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center; /* Alineación vertical perfecta de ambos lados */
+		z-index: 50;
+	}
+
+	.buttons-left {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	/* Estilos comunes para los botones con fondo SVG */
+	.btn-container {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 160px;
+		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		text-decoration: none;
+	}
+
+	.btn-container:hover {
+		transform: scale(1.08);
+	}
+
+	.btn-bg {
+		width: 100%;
+		height: auto;
+		display: block;
+		filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+	}
+
+	.btn-content {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/* Eliminamos el padding que desajustaba el centro */
+	}
+
+	.text-svg {
+		height: auto;
+		pointer-events: none;
+		max-width: 70%;
+	}
+
+	.fact-text { width: 60%; }
+	.reclam-text { width: 80%; }
+
+	/* Botón Reserva */
+	.reserva-container {
+		display: block;
+		width: 180px;
+		transition: transform 0.3s ease;
+		text-decoration: none;
+	}
+
+	.reserva-container:hover {
+		transform: scale(1.05);
+	}
+
+	.reserva-img {
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
+	}
+
+	/* Contenido central */
+	.hero-content {
+		position: relative;
+		z-index: 20;
+		text-align: center;
+		margin-top: -5vh;
+		width: 100%;
+		padding: 0 10%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.main-logo {
+		width: 350px;
+		max-width: 80vw;
+		height: auto;
+		filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+	}
+
+	.status-text {
+		width: 550px;
+		max-width: 95vw;
+		height: auto;
+		margin-top: 1.5rem;
+		filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4));
+	}
+
+	.bottom-gradient {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 20vh;
+		background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+		z-index: 5;
+		pointer-events: none;
+	}
+
+	/* --- ANIMACIONES PURO CSS --- */
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-15px); }
+	}
+
+	@keyframes fadeUp {
+		from { 
+			opacity: 0; 
+			transform: translateY(30px); 
+		}
+		to { 
+			opacity: 1; 
+			transform: translateY(0); 
+		}
+	}
+
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.animate-fade-up {
+		animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		opacity: 0;
+	}
+
+	/* Adaptabilidad para móviles y tablets */
+	@media (max-width: 1024px) {
+		.top-navigation {
+			padding: 1.5rem 5%;
+		}
+		.btn-container { width: 140px; }
+		.reserva-container { width: 160px; }
+	}
+
+	@media (max-width: 768px) {
+		.top-navigation {
+			flex-direction: column;
+			gap: 1.5rem;
+			padding: 1.5rem 1rem;
+		}
+
+		.buttons-left {
+			justify-content: center;
+			width: 100%;
+			gap: 0.8rem;
+		}
+
+		.buttons-right {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+
+		.btn-container { width: 125px; }
+		.reserva-container { width: 150px; }
+		.main-logo { width: 250px; }
+		.status-text { width: 320px; }
+		.hero-content { margin-top: 10vh; }
+	}
+
+	/* Soporte para pantallas muy pequeñas */
+	@media (max-width: 480px) {
+		.buttons-left {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		.btn-container { width: 110px; }
+		.reserva-container { width: 130px; }
+	}
+</style>
