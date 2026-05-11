@@ -244,37 +244,59 @@ const reserva = "/Reserva%201.png";
 
 	@media (max-width: 768px) {
 		.top-navigation {
-			flex-direction: column;
-			gap: 1.5rem;
-			padding: 1.5rem 1rem;
+			position: static;
+			padding: 0;
 		}
 
 		.buttons-left {
+			position: absolute;
+			bottom: 3.5rem;
+			left: 0;
+			right: 0;
 			justify-content: center;
 			width: 100%;
-			gap: 0.8rem;
+			gap: 1.2rem;
+			z-index: 60;
 		}
 
 		.buttons-right {
+			position: absolute;
+			top: 2.5rem; /* Botón de reserva arriba */
+			left: 0;
+			right: 0;
 			width: 100%;
 			display: flex;
 			justify-content: center;
+			z-index: 60;
 		}
 
 		.btn-container { width: 125px; }
-		.reserva-container { width: 150px; }
-		.main-logo { width: 250px; }
-		.status-text { width: 320px; }
-		.hero-content { margin-top: 10vh; }
+		.reserva-container { width: 160px; }
+		
+		.main-logo { 
+			width: 180px; /* Un poco más grande como se solicitó */
+		}
+		
+		.status-text { 
+			width: 280px; 
+			margin-top: 1rem;
+		}
+
+		.hero-content { 
+			margin-top: 5vh; /* Ajuste para dar espacio al botón de arriba */
+		}
 	}
 
 	/* Soporte para pantallas muy pequeñas */
 	@media (max-width: 480px) {
 		.buttons-left {
-			flex-direction: row;
-			flex-wrap: wrap;
+			gap: 0.8rem;
 		}
 		.btn-container { width: 110px; }
-		.reserva-container { width: 130px; }
+		.reserva-container { width: 140px; }
+		.buttons-right { top: 2rem; }
+		.buttons-left { bottom: 3rem; }
+		.main-logo { width: 150px; }
+		.status-text { width: 240px; }
 	}
 </style>
